@@ -17,7 +17,6 @@ Zadanie rekrutacyjne FizzBuzz w C#.
 
 [Laboratorium nr 1](./Problem_Plecakowy/Opis.md)
 
-Zadanie rekrutacyjne FizzBuzz w C#.
-
+Zadanie optymalizacji problemu plecakowego oraz testy jednostkowe.
 
 
