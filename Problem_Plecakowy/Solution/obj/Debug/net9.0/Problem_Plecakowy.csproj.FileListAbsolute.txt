@@ -1,0 +1,15 @@
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/bin/Debug/net9.0/Problem_Plecakowy
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/bin/Debug/net9.0/Problem_Plecakowy.deps.json
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/bin/Debug/net9.0/Problem_Plecakowy.runtimeconfig.json
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/bin/Debug/net9.0/Problem_Plecakowy.dll
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/bin/Debug/net9.0/Problem_Plecakowy.pdb
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.GeneratedMSBuildEditorConfig.editorconfig
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.AssemblyInfoInputs.cache
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.AssemblyInfo.cs
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.csproj.CoreCompileInputs.cache
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.sourcelink.json
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.dll
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/refint/Problem_Plecakowy.dll
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.pdb
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/Problem_Plecakowy.genruntimeconfig.cache
+/home/userbrigh/Documents/Studia_Repo_inne/platformy-programistyczne-Net-i-java/Problem_Plecakowy/Solution/obj/Debug/net9.0/ref/Problem_Plecakowy.dll
