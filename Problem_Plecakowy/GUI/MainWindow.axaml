@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="GUI.MainWindow"
+        Title="Problem Plecakowy" 
+        Width="650" 
+        Height="500">
+    
+    <Grid Margin="20" ColumnDefinitions="350, 20, *">
+        
+        <Grid Grid.Column="0" RowDefinitions="Auto, Auto, *">
+            <StackPanel Grid.Row="0" Spacing="15">
+                <Label Content="Parametry"/>
+                
+                <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto" >
+                    <Label Grid.Row="0" Grid.Column="0" Content="Liczba przedmiotów:"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="ItemsCountText" Text="10" />
+                    
+                    <Label Grid.Row="1" Grid.Column="0" Content="Pojemność plecaka:" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="CapacityText" Text="50" />
+                    
+                    <Label Grid.Row="2" Grid.Column="0" Content="Seed:" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="SeedText" Text="1"/>
+                </Grid>
+                
+                <Button Name="SolveButton" Content="Rozwiąż"/>
+            </StackPanel>
+
+            <Label Grid.Row="1" Content="Rezultaty" FontSize="20" FontWeight="Bold" />
+            <TextBox Grid.Row="2" Name="ResultSummaryTextBox" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True" />
+        </Grid>
+        
+        <Rectangle Grid.Column="1" Width="1" Fill="LightGray" />
+        
+        <Grid Grid.Column="2" RowDefinitions="Auto, *">
+            <Label Grid.Row="0" Content="Przedmioty do spakowania" FontSize="20"/>
+            <TextBox Grid.Row="1" Name="ItemsToPackText" AcceptsReturn="True"  IsReadOnly="True" />
+        </Grid>
+        
+    </Grid>
+</Window>

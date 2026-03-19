@@ -28,16 +28,16 @@ public class Problem
     }
     public Result Solve(int capacity)
     {
-        List<Item> Sorted = ItemList.OrderBy(i => i.value / i.weight).Reverse().ToList();
+        List<Item> Sorted = ItemList.OrderByDescending(i => (double)i.value / i.weight).ToList();        Sorted.ForEach(i => Console.WriteLine($"No: {i.id}, Val: { i.value}, Weight: { i.weight}, Ratio: {i.value/(double)i.weight:F2}"));
         int ItemsInBack = 0;
         int inBack = 0;
         Result result = new Result();
 
         foreach (Item I in Sorted)
         {
-            if (inBack+ I.weight >= capacity)
+            if (inBack + I.weight > capacity)
             {
-                break;
+                continue;
             }
             result.Ids.Add(I.id);
             result.totalValue+=I.value;
