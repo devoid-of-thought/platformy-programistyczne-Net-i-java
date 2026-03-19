@@ -55,10 +55,10 @@ public class UnitTest
     public void TestMethodIsResultCorrect()
     {
         Problem problem = new Problem(5, 1);
-        int capacity = 15;
+        int capacity = 5;
         Result result = problem.Solve(capacity);
 
-        List<int> correctIds = [1,3,5];
+        List<int> correctIds = [1,3];
         Console.WriteLine($"Lista przedmiotów={string.Join(", ", result.Ids)} , Lista Przedmiotów Poprawna = 1 , 3 , 5");
         Assert.IsTrue(result.Ids.SequenceEqual(correctIds));
     }
@@ -66,7 +66,7 @@ public class UnitTest
     [TestMethod]
     public void TestMethodTooBig()
     {
-        Problem problem = new Problem(1, 1);
+        Problem problem = new Problem(1, 2);
         int capacity = 1;
         Result result = problem.Solve(capacity);
 

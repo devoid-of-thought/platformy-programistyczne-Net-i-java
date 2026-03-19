@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="GUI.MainWindow"
         Title="Problem Plecakowy" 
-        Width="650" 
+        Width="800" 
         Height="500">
     
     <Grid Margin="20" ColumnDefinitions="350, 20, *">
@@ -16,7 +16,7 @@
                     <TextBox Grid.Row="0" Grid.Column="1" Name="ItemsCountText" Text="10" />
                     
                     <Label Grid.Row="1" Grid.Column="0" Content="Pojemność plecaka:" />
-                    <TextBox Grid.Row="1" Grid.Column="1" Name="CapacityText" Text="50" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="CapacityText" Text="10" />
                     
                     <Label Grid.Row="2" Grid.Column="0" Content="Seed:" />
                     <TextBox Grid.Row="2" Grid.Column="1" Name="SeedText" Text="1"/>
