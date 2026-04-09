@@ -3,72 +3,80 @@ using System;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Net.Http;
+
 public class ApiTest
 {
     private static readonly HttpClient Client = new HttpClient();
-    public async Task<string> GetData(string accessToken)
+    public async Task<string> GetData(string accessToken, string date)
     {
-
-        string call = $"https://openexchangerates.org/api/historical/{DateTime.UtcNow:yyyy-MM-dd}.json?app_id={accessToken}";
+        string call = $"https://openexchangerates.org/api/historical/{date}.json?app_id={accessToken}";
         var response = await Client.GetStringAsync(call);
-
         return response;
     }
 }
 
-
-
 internal class Program
 {
-    
     private static async Task Main()
     {
         using var db = new CurrencyRates();
-        var accessToken = new ApiKey().GetKey();
+        var apiKey = new ApiKey().GetKey();
         ApiTest apiTest = new ApiTest();
-        string json = await apiTest.GetData(accessToken);
-        Deserialized? deserialized = JsonSerializer.Deserialize<Deserialized>(json);
 
-        if (deserialized != null)
+        Console.WriteLine("Podaj date dla kursu (format YYYY-MM-DD, np. 2026-04-06):");
+        string? date = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(date))
         {
-            var latestSnapshot = db.Snapshots.OrderByDescending(s => s.Timestamp).FirstOrDefault();
+            Console.WriteLine("Bledna data.");
+            return;
+        }
 
-            if (latestSnapshot == null || latestSnapshot.Timestamp != deserialized.Timestamp)
+        try 
+        {
+            string json = await apiTest.GetData(apiKey, date);
+            Deserialized? deserialized = JsonSerializer.Deserialize<Deserialized>(json);
+
+            if (deserialized != null)
             {
-                var snapshot = new Snapshot
+                var exists = db.Snapshots.Any(s => s.Timestamp == deserialized.Timestamp);
+
+                if (!exists)
                 {
-                    Timestamp = deserialized.Timestamp,
-                    Rates = deserialized.Rates?.Select(pair => new Rate
+                    var snapshot = new Snapshot
                     {
-                        Currency = pair.Key,
-                        Value = pair.Value
-                    }).ToList() ?? new List<Rate>()
-                };
+                        Timestamp = deserialized.Timestamp,
+                        Rates = deserialized.Rates?.Select(pair => new Rate
+                        {
+                            Currency = pair.Key,
+                            Value = pair.Value
+                        }).ToList() ?? new List<Rate>()
+                    };
 
-                db.Snapshots.Add(snapshot);
-                await db.SaveChangesAsync();
-
-                Console.WriteLine("Pobrano nowe dane. Zaktualizowano baze.");
-            }
-            else
-            {
-                Console.WriteLine("Dane w bazie sa juz aktualne. Pominiento zapis.");
+                    db.Snapshots.Add(snapshot);
+                    await db.SaveChangesAsync();
+                    Console.WriteLine("Pobrano i zapisano nowe dane.");
+                }
+                else
+                {
+                    Console.WriteLine("Dane dla tej daty juz sa w bazie.");
+                }
             }
         }
-        var savedSnapshot = db.Snapshots.Include(s => s.Rates).OrderByDescending(s => s.Timestamp).FirstOrDefault();
-
-        if (savedSnapshot != null)
+        catch (Exception ex)
         {
-            Console.WriteLine($"Czas pobrania (Timestamp): {savedSnapshot.Timestamp}");
+            Console.WriteLine($"Blad: {ex.Message}");
+        }
 
-            
-            var sortedRates = savedSnapshot.Rates
-                .OrderBy(r => r.Currency)
-                .ToList();
-
-            foreach (var rate in sortedRates)
+        var savedSnapshot = db.Snapshots.Include(s => s.Rates).OrderByDescending(s => s.Timestamp).FirstOrDefault();
+        if (savedSnapshot != null && savedSnapshot.Rates != null)
+        {
+            Console.WriteLine($"\nKursy z dnia (Timestamp): {savedSnapshot.Timestamp}");
+            foreach (var rate in savedSnapshot.Rates.OrderBy(r => r.Currency))
             {
-                Console.WriteLine($"Waluta: {rate.Currency}, Kurs: {rate.Value}");
+                Console.WriteLine($"{rate.Currency}: {rate.Value}");
             }
         }
     }

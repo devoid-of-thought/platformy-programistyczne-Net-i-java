@@ -15,7 +15,7 @@ public class Deserialized
     public string? Base { get; set; }
 
     [JsonPropertyName("rates")]
-public Dictionary<string, decimal>? Rates { get; set; }
+    public Dictionary<string, decimal>? Rates { get; set; }
 
     public override string ToString()
     {
