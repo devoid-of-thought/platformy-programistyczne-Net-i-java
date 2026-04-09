@@ -11,12 +11,15 @@ Metoda utworzenia nowej aplikacji konsolowej bez użycia top-level-statements w 
 dotnet new console --use-program-main
 ```
 
-[Laboratorium nr 0](./FizzBuzz/Opis.md)
+[Laboratorium nr 0](./FizzBuzz/README.md)
 
 Zadanie rekrutacyjne FizzBuzz w C#.
 
-[Laboratorium nr 1](./Problem_Plecakowy/Opis.md)
+[Laboratorium nr 1](./Problem_Plecakowy/README.md)
 
 Zadanie optymalizacji problemu plecakowego oraz testy jednostkowe.
 
 
+[Laboratorium nr 2](./Aplikacja_Bazodanowa/README.md)
+
+Aplikacja pobierająca kurs walut z API do bazy danych.
