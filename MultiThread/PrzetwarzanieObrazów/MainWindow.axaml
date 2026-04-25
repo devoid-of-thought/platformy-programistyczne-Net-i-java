@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="450"
+        x:Class="PrzetwarzanieObrazów.MainWindow"
+        Title="PrzetwarzanieObrazów">
+        <Grid ColumnDefinitions="600, 150, *">
+        
+                <Image Name="Original" Grid.Column="0" Margin="10" Stretch="Uniform"/>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="20" Margin="10">
+                        <Button Name="LoadImage" Content="Load" Width="120" HorizontalContentAlignment="Center" Click="BtnLoadImageClick" />
+                        <Button Name="ProcessImage" Content="Paraller Processing" Width="120" HorizontalContentAlignment="Center" IsEnabled="False" Click="BtnProcessImageClick"/>
+                </StackPanel>
+
+                <Grid Grid.Column="2" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="10">
+                        <Image Name="Thresholded" Grid.Row="0" Grid.Column="0" Margin="5" Stretch="Uniform"/>
+                        <Image Name="Negative" Grid.Row="0" Grid.Column="1" Margin="5" Stretch="Uniform"/>
+                        <Image Name="Green" Grid.Row="1" Grid.Column="0" Margin="5" Stretch="Uniform"/>
+                        <Image Name="GrayScale" Grid.Row="1" Grid.Column="1" Margin="5" Stretch="Uniform"/>
+                </Grid>
+        
+        </Grid>
+</Window>
