@@ -27,3 +27,7 @@ Aplikacja pobierająca kurs walut z API do bazy danych.
 [Laboratorium nr 4](./MultiThread/MultiThread/README.MD)
 
 Wielowątkowe mnożenie macierzy oraz przetwarzanie obrazów.
+
+[Laboratorium nr 5](./Web/README.md)
+
+Aplikcja webowa.
