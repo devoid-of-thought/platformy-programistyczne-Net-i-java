@@ -1,0 +1,94 @@
+﻿@page "/weather"
+@attribute [StreamRendering]
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (forecasts == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var forecast in forecasts)
+        {
+            <tr>
+                <td>@forecast.Date.ToShortDateString()</td>
+                <td>@forecast.TemperatureC</td>
+                <td>@forecast.TemperatureF</td>
+                <td>@forecast.Summary</td>
+            </tr>
+        }
+        </tbody>
+        
+    </table>
+    <div>
+        <p>Amount of warm days: @warmDays.Count()</p>
+        @rendermode InteractiveServer
+        <button class="btn-primary"  @onclick="DisplayWarm"> Filter out cold days </button>
+        <button class="btn-primary"  @onclick="Restore"> Restore </button>
+        <label>Search by summary</label>
+        <input class="form-control" @onchange="Input">
+    </div>
+}
+
+@code {
+    private WeatherForecast[]? forecasts; 
+    private WeatherForecast[]? warmDays;
+    private WeatherForecast[]? tempForecasts;
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate asynchronous loading to demonstrate streaming rendering
+        await Task.Delay(500);
+
+        var startDate = DateOnly.FromDateTime(DateTime.Now);
+        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+        forecasts = Enumerable.Range(1, 10).Select(index => new WeatherForecast
+        {
+            Date = startDate.AddDays(index),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = summaries[Random.Shared.Next(summaries.Length)]
+        }).ToArray();
+        warmDays = forecasts.Where(forecast => forecast.TemperatureC > 15).ToArray();
+        tempForecasts = forecasts;
+    }
+
+    private void DisplayWarm()
+    {
+        tempForecasts = forecasts;
+        forecasts = warmDays;
+    }
+
+    private void Restore()
+    {
+        forecasts = tempForecasts;
+    }
+
+    private void Input(ChangeEventArgs args)
+    {
+        forecasts = tempForecasts.Where(forecast => forecast.Summary.Contains(args.Value.ToString())).ToArray();
+    }
+    private class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+        public int TemperatureC { get; set; }
+        public string? Summary { get; set; }
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+
+}
