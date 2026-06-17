@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Problem_Plecakowy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89f3394b6d527b4d1889a66c5576d71862c7d93e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc5cbdee60312796b0ea67182f4b0a8010caa7b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Problem_Plecakowy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Problem_Plecakowy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
